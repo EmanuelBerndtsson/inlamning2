@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script type="module">
-      import { hejsan } from "./crypt-function1.js";
 
-      window.crypt = function () {
-        const message = document.querySelector(
-          "textarea[name='message']"
-        ).value;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-        const result = hejsan(message);
+<body>
+  <script type="module">
+    import { saltAndEncryption } from "./crypt-function1.js";
 
-        // Fyll i resultatet i den andra textarean:
-        document.querySelector("textarea[name='result']").value = result;
+    window.crypt = function () {
+      const message = document.querySelector(
+        "textarea[name='message']"
+      ).value;
 
-        return false; // stoppar form submit
-      };
-    </script>
-    <h1>Message:</h1>
-    <form onsubmit="return crypt();">
-      <textarea name="message" cols="100" rows="10"></textarea>
-      <p />
+      const result = saltAndEncryption(message);
+
+      // Fyll i resultatet i den andra textarean:
+      document.querySelector("textarea[name='result']").value = result;
+
+      return false; // stoppar form submit
+    };
+  </script>
+  <h1>Message:</h1>
+  <form onsubmit="return crypt();">
+    <textarea name="message" cols="100" rows="10"></textarea>
+    <p>
       <input type="submit" class="button" value="Send" />
-    </form>
+  </form>
 
-    <h1>Result:</h1>
-    <textarea name="result" cols="100" rows="10"></textarea>
-  </body>
+  <h1>Result:</h1>
+  <textarea name="result" cols="100" rows="10"></textarea>
+</body>
+
 </html>

@@ -1,6 +1,6 @@
 import { swap } from './crypt-function3.js';
 
-export function func2(message) {
+export function encryption(message) {
     message = swap(message);
     //add 2 random charachters after each char in each of the words
     const words = message.trim().split(/\s+/);

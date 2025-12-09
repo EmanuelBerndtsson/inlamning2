@@ -1,7 +1,7 @@
-import { func2 } from './crypt-function2.js';
+import { encryption } from './crypt-function2.js';
 
-export function hejsan(message) {
-    message = func2(message)
+export function saltAndEncryption(message) {
+    message = encryption(message)
     const words = message.trim().split(/\s+/);
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     let result = '';
