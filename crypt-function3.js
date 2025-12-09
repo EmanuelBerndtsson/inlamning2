@@ -1,4 +1,4 @@
-function swap(message) {
+export function swap(message) {
     // Ta bort extra mellanslag i början/slutet
     message = message.trim();
 
@@ -11,16 +11,12 @@ function swap(message) {
 
     var mid = Math.floor(words.length / 2);
 
-    var firstPart = words.slice(0, mid).join("");
-    var secondPart = words.slice(mid).join("");
+    var firstPart = words.slice(0, mid).join(" ");
+    var secondPart = words.slice(mid).join(" ");
 
 
-    var swapped = secondPart + "" + firstPart;
-
-    console.log(swapped)
+    var swapped = secondPart + " " + firstPart;
 
     return swapped;
 
 }
-
-swap("Hej hur mår du?")

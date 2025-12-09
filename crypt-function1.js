@@ -1,6 +1,6 @@
-import { func2 } from './crypy-function2.js';
+import { swap } from './crypt-function3.js';
 
 export function hejsan(message) {
-    const reversedMessage = func2(message);
+    const reversedMessage = swap(message);
     return reversedMessage;
 }
