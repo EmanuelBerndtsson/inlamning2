@@ -1,35 +1,35 @@
 import { removesalt } from "./decrypt-function1.js";
 
-const e = "27182818284590";
+const E = "27182818284590";
+const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // A–Z
 
-export function eulerShiftDecrypt() {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // (ingen space om uppgiften kör A–Z)
-  const n = alphabet.length;
-
-  // Om removesalt returnerar en ARRAY av bokstäver:
-  const msgArr = removesalt(encryptionmessage); // t.ex. ["S","A","Q",...]
-  // Om den returnerar en STRÄNG istället, använd: const msgArr = removesalt(encryptionmessage).split("");
+export function eulerShiftDecrypt(encryptionmessage) {
+  // removesalt() ger en ARRAY, t.ex. ["S","A","Q",...]
+  const messageArr = removesalt(encryptionmessage);
 
   const result = [];
+  const n = ALPHABET.length;
 
-  for (let i = 0; i < msgArr.length; i++) {
-    const ch = msgArr[i];                 // bokstav
-    const shift = parseInt(e[i % e.length], 10); // siffra, återanvänd e om meddelandet är längre
+  for (let i = 0; i < messageArr.length; i++) {
+    const ch = messageArr[i];
 
-    const idx = alphabet.indexOf(ch);
-    /*if (idx === -1) {
-      // om ch inte finns i alfabetet (t.ex. mellanslag), bestäm vad du vill göra:
+    // siffra från E (återanvänd om meddelandet är längre)
+    const shift = Number(E[i % E.length]);
+
+    // hitta bokstavens index i alfabetet
+    const idx = ALPHABET.indexOf(ch);
+
+    // om tecknet inte finns i alfabetet (t.ex. mellanslag), behåll det
+    if (idx === -1) {
       result.push(ch);
       continue;
-    }*/
+    }
 
-    // "SÄNK med E" = idx - shift, med wrap
+    // "sänk" = minus shift, med wrap
     const newIdx = (idx - shift + n) % n;
-    result.push(alphabet[newIdx]);
+    result.push(ALPHABET[newIdx]);
   }
 
+  // returnera som sträng (om du hellre vill ha array: return result;)
   return result.join("");
 }
-const encryptionmessage = "hejehj"
-eulerShiftDecrypt(removesalt(encryptionmessage))
-console.log(eulerShiftDecrypt())

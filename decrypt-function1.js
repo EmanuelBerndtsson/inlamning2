@@ -1,9 +1,3 @@
-var encryptionmessage = 'SARQJEDBMKMBJZQHNTRNA';
-
-const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-// var tredje bokstav i meddelnadet är salt. 
-
 
 export function removesalt(encryptionmessage) {
     var message = encryptionmessage
