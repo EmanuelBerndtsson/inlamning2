@@ -17,11 +17,11 @@ export function eulerShiftDecrypt() {
     const shift = parseInt(e[i % e.length], 10); // siffra, återanvänd e om meddelandet är längre
 
     const idx = alphabet.indexOf(ch);
-    if (idx === -1) {
+    /*if (idx === -1) {
       // om ch inte finns i alfabetet (t.ex. mellanslag), bestäm vad du vill göra:
       result.push(ch);
       continue;
-    }
+    }*/
 
     // "SÄNK med E" = idx - shift, med wrap
     const newIdx = (idx - shift + n) % n;
